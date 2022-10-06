@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+        </script>
+        <script src=
+    "https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.min.js">
+        </script>
+        <script src="./scripts/circletype.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>MadrePalooza2022</title>
+</head>
+<body>
+
+    <div class="birthdayHeader">
+        <div class="bdayLabelContainer">
+            <h1 id="birthdayLabel" class="tealTextShadow">Happy Birthmas! Most Wonderful Mother!!</h1>
+        </div>
+    </div>
+    <div class="oceanContainer octoMask">
+    </div>
+    <!-- <div class="contentContainer"> -->
+        <div class="grid hidden">
+            <div class="card birthdayCardContainer">
+                <div class="cardHeader">
+                    <h2 class="tealTextShadow">Happy Birthday!</h2> <h4 class="tealTextShadow">You are appreciated!</h4>
+                </div>
+                <hr />
+                <div class="cardContent">
+                   <p class="textShadow">
+                    We likely don't tell you enough, but we appreciate you beyond measure!
+                    You taught me all the good in life, even as I get older and jaded you
+                    remind me of the good! Even when all looks lost, you find the light. 
+                    We love you more than we could ever show, more than we could ever tell! 
+                    </p>
+                    <p class="textShadow">
+                    Another Happy Birthday to the Best Madre anyone could have! We are glad
+                    we get to spend this amazing day with an amazing person!
+                    </p>
+                    <p class="textShadow">
+                    We Love you so much! Hope you have a wonderful Birthday and many, many,
+                    many, more! To Good Health and Good Times!
+                    </p>
+                </div>
+            </div>
+            <div class="card birthdayCoverContainer">
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                    <div class="numbertext">1 / 2</div>
+                    <img src="./media/Gift_for_mum_halloween_pumpkin.png">
+                    <div class="text">Spoopy Pumpkin Inspired</div>
+                    </div>
+                
+                    <div class="mySlides fade">
+                    <div class="numbertext">2 / 2</div>
+                    <img src="./media/Gift_for_mum_halloween_purpleteal.png">
+                    <div class="text">Teal your heart!</div>
+                    </div>
+                
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                </div>
+                <!-- <img src="./media/tropical_underwater_water_sea_ocean.jpg" alt="Img By Willow"> -->
+                <hr />
+                <h3 class="textShadow">And here is some beautiful Octopi provided by Willow!</h3>
+            </div>
+
+        </div>
+    <!-- </div> -->
+
+
+    <script>
+        let oceanImgContainer = $(".octoMask");
+        let contentContainer = $('.grid');
+        let archHeader = new CircleType(document.getElementById('birthdayLabel')).radius(384);
+
+        oceanImgContainer.ripples({
+            resolution: 256,
+            dropRadius: 20,
+            interactive: true,
+            perturbance: 0.02,
+        });
+
+        window.addEventListener('click', archHeader.destroy.bind(archHeader));
+
+        oceanImgContainer.on("click", (e) => {
+            console.log(archHeader);
+            console.log("Click!");
+            // console.log(oceanImgContainer);
+            oceanImgContainer.ripples("destroy");
+            oceanImgContainer.removeClass('octoMask');
+            contentContainer.removeClass('hidden');
+            document.querySelector('.birthdayHeader').style.marginTop = "-20px";
+        })
+
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
